@@ -14,6 +14,7 @@ export const ozonScrapper: ScrapperFn = async (page) => {
 
   await webPriceLocator.waitFor({ state: 'attached', timeout: 30_000 });
   await webPriceLocator.isVisible({ timeout: 30_000 });
+  await page.waitForTimeout(10_000);
 
   const priceStateText = await webPriceLocator.getAttribute('data-state');
   const priceState = JSON.parse(priceStateText) as OzonPriceState;
