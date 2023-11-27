@@ -1,3 +1,3 @@
 import { Page } from 'playwright';
 
-export type ScrapperFn = (page: Page) => Promise<number>;
+export type ScrapperFn = (page: Page) => Promise<number | null>;

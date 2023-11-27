@@ -38,10 +38,20 @@ export class ProductsService {
   }
 
   remove(id: string) {
-    return this.prismaService.product.delete({
+    const deleteProductPrices = this.prismaService.productPrice.deleteMany({
+      where: {
+        productId: id,
+      },
+    });
+    const deleteProduct = this.prismaService.product.delete({
       where: {
         id,
       },
     });
+
+    return this.prismaService.$transaction([
+      deleteProductPrices,
+      deleteProduct,
+    ]);
   }
 }

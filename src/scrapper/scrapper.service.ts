@@ -19,14 +19,16 @@ export class ScrapperService {
     const products = await this.productsService.findAll();
 
     for (const product of products) {
-      console.log(`Scrapping product "${product.name} (id: ${product.id})`);
+      console.log(`Scrapping product "${product.name}" (id: ${product.id})`);
       const price = await this.scrapeProductPrice(product.id);
       console.log(`Scrapping done. Price: ${price}`);
 
-      await this.productPricesService.create({
-        productId: product.id,
-        price,
-      });
+      if (price !== null) {
+        await this.productPricesService.create({
+          productId: product.id,
+          price,
+        });
+      }
     }
   }
 
@@ -54,13 +56,35 @@ export class ScrapperService {
     const page = await context.newPage();
 
     await page.goto(product.url);
+
+    // Bypass Cloudflare
+    {
+      await new Promise((resolve) =>
+        setTimeout(resolve, Math.floor(Math.random() * 4000 + 1000)),
+      );
+      await page.evaluate(() => window.scrollBy(0, window.innerHeight));
+      await new Promise((resolve) =>
+        setTimeout(resolve, Math.floor(Math.random() * 4000 + 1000)),
+      );
+    }
+
+    const screnshotPath =
+      `data/screenshots/${scrapperName}-${new Date().toISOString()}.png`.replace(
+        /:/g,
+        '-',
+      );
+    console.log(`Saving screenshot: ${screnshotPath}`);
+
+    await page.screenshot({
+      path: screnshotPath,
+    });
+
     try {
       const price = await scrapper(page);
 
       await browser.close();
       return price;
     } catch (e) {
-      await page.screenshot({ path: `example-${scrapperName}.png` });
       await browser.close();
 
       return null;
