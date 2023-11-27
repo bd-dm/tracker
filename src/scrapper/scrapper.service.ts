@@ -47,7 +47,7 @@ export class ScrapperService {
     }
 
     const browser = await chromium.launch({
-      headless: false,
+      headless: true,
     });
     const context = await browser.newContext({
       extraHTTPHeaders: {
