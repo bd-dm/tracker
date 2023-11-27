@@ -17,6 +17,5 @@ RUN npx playwright install --with-deps chromium
 RUN npx prisma generate
 
 RUN chmod +x ./scripts/start.sh
-ENV NODE_ENV production
 
 CMD ["sh", "./scripts/start.sh"]
