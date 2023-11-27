@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import {PrismaService} from "../prisma/prisma.service";
-import {CreateStoreDto} from "./dto/create-store.dto";
-import {UpdateStoreDto} from "./dto/update-store.dto";
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateStoreDto } from './dto/create-store.dto';
+import { UpdateStoreDto } from './dto/update-store.dto';
 
 @Injectable()
 export class StoresService {
@@ -9,20 +9,20 @@ export class StoresService {
 
   create(createStoreDto: CreateStoreDto) {
     return this.prismaService.store.create({
-      data: createStoreDto
-    })
+      data: createStoreDto,
+    });
   }
 
   findAll() {
-    return this.prismaService.store.findMany()
+    return this.prismaService.store.findMany();
   }
 
   findOne(id: string) {
     return this.prismaService.store.findUnique({
       where: {
         id,
-      }
-    })
+      },
+    });
   }
 
   update(id: string, updateStoreDto: UpdateStoreDto) {
@@ -31,14 +31,14 @@ export class StoresService {
         id,
       },
       data: updateStoreDto,
-    })
+    });
   }
 
   remove(id: string) {
     return this.prismaService.store.delete({
       where: {
         id,
-      }
-    })
+      },
+    });
   }
 }

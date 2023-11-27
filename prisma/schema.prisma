@@ -7,9 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Scrapper {
+  OZON
+}
+
 model Store {
-  id        String   @id @default(uuid())
-  name      String   @unique
+  id       String   @id @default(uuid())
+  name     String   @unique
+  scrapper Scrapper
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -17,10 +23,10 @@ model Store {
 }
 
 model Product {
-  id        String   @id @default(uuid())
-  name      String
-  url       String   @unique
-  selector  String
+  id   String @id @default(uuid())
+  name String
+  url  String @unique
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -31,8 +37,9 @@ model Product {
 }
 
 model ProductPrice {
-  id        String   @id @default(uuid())
-  price     Float
+  id    String @id @default(uuid())
+  price Float
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

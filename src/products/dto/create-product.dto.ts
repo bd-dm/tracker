@@ -1,15 +1,12 @@
-import {ApiProperty} from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProductDto {
-    @ApiProperty()
-    name: string
+  @ApiProperty()
+  name: string;
 
-    @ApiProperty()
-    url: string
+  @ApiProperty()
+  url: string;
 
-    @ApiProperty()
-    selector: string
-
-    @ApiProperty()
-    storeId: string
+  @ApiProperty()
+  storeId: string;
 }
