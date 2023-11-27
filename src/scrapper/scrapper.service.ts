@@ -46,7 +46,9 @@ export class ScrapperService {
       throw new Error(`Scrapper ${scrapperName} not found`);
     }
 
-    const browser = await chromium.launch();
+    const browser = await chromium.launch({
+      headless: false,
+    });
     const context = await browser.newContext({
       extraHTTPHeaders: {
         'User-Agent':
