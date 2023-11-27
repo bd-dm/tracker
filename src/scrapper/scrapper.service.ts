@@ -19,7 +19,9 @@ export class ScrapperService {
     const products = await this.productsService.findAll();
 
     for (const product of products) {
+      console.log(`Scrapping product "${product.name} (id: ${product.id})`);
       const price = await this.scrapeProductPrice(product.id);
+      console.log(`Scrapping done. Price: ${price}`);
 
       await this.productPricesService.create({
         productId: product.id,
