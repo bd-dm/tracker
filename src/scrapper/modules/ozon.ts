@@ -1,4 +1,5 @@
 import { ScrapperFn } from './types';
+import path from 'node:path';
 
 interface OzonPriceState {
   isAvailable: boolean;
@@ -9,12 +10,23 @@ interface OzonPriceState {
   link: string;
 }
 
-export const ozonScrapper: ScrapperFn = async (page) => {
-  const webPriceLocator = page.locator('[id^="state-webPrice-"]');
+const screenshotsDir = path.join(
+  __dirname,
+  '..',
+  '..',
+  '..',
+  'data',
+  'screenshots',
+);
 
-  await webPriceLocator.waitFor({ state: 'attached', timeout: 30_000 });
-  await webPriceLocator.isVisible({ timeout: 30_000 });
+export const ozonScrapper: ScrapperFn = async (page) => {
   await page.waitForTimeout(10_000);
+  await page.screenshot({
+    path: path.join(screenshotsDir, 'latest-ozon.png'),
+  });
+
+  const webPriceLocator = page.locator('[id^="state-webPrice-"]');
+  await webPriceLocator.waitFor({ state: 'attached', timeout: 30_000 });
 
   const priceStateText = await webPriceLocator.getAttribute('data-state');
   const priceState = JSON.parse(priceStateText) as OzonPriceState;
