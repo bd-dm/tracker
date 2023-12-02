@@ -7,5 +7,8 @@
     "api-dev": "cd packages/api && nest start --watch",
     "gui-dev": "cd packages/gui && next dev",
     "generate:api-client": "openapi-generator-cli generate -g typescript -i http://127.0.0.1:5000/api-json -o packages/api-client --additional-properties=enumPropertyNaming=camelCase,supportsES6=true"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0"
   }
 }

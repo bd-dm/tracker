@@ -10,7 +10,8 @@ import {
 import { StoresService } from './stores.service';
 import { CreateStoreDto } from './dto/create-store.dto';
 import { UpdateStoreDto } from './dto/update-store.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { EntityStore } from './stores.entity';
 
 @ApiTags('stores')
 @Controller('stores')
@@ -23,11 +24,17 @@ export class StoresController {
   }
 
   @Get()
+  @ApiOkResponse({
+    type: [EntityStore],
+  })
   findAll() {
     return this.storesService.findAll();
   }
 
   @Get(':id')
+  @ApiOkResponse({
+    type: EntityStore,
+  })
   findOne(@Param('id') id: string) {
     return this.storesService.findOne(id);
   }
