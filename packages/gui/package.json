@@ -31,5 +31,8 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
     "typescript": "*"
+  },
+  "peerDependencies": {
+    "@tracker/api-client": "*"
   }
 }
