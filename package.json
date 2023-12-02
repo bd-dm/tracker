@@ -2,5 +2,9 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "api-dev": "cd packages/api && nest start --watch",
+    "gui-dev": "cd packages/gui && next dev"
+  }
 }

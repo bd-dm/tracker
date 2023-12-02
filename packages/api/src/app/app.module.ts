@@ -11,10 +11,10 @@ import configuration from '../config/configuration';
 
 @Module({
   imports: [
-    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       load: [configuration],
     }),
+    ScheduleModule.forRoot(),
     TasksModule,
     StoresModule,
     ProductsModule,
