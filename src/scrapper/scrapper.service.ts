@@ -3,6 +3,8 @@ import { chromium } from 'playwright';
 import { ProductsService } from '../products/products.service';
 import { scrappers } from './modules';
 import { ProductPricesService } from '../product-prices/product-prices.service';
+import { bypassCloudflare } from './utils/bypass-cloudflare';
+import { saveScreenshot } from './utils/save-screenshot';
 
 @Injectable()
 export class ScrapperService {
@@ -58,28 +60,8 @@ export class ScrapperService {
     const page = await context.newPage();
 
     await page.goto(product.url);
-
-    // Bypass Cloudflare
-    {
-      await new Promise((resolve) =>
-        setTimeout(resolve, Math.floor(Math.random() * 4000 + 1000)),
-      );
-      await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-      await new Promise((resolve) =>
-        setTimeout(resolve, Math.floor(Math.random() * 4000 + 1000)),
-      );
-    }
-
-    const screnshotPath =
-      `data/screenshots/${scrapperName}-${new Date().toISOString()}.png`.replace(
-        /:/g,
-        '-',
-      );
-    console.log(`Saving screenshot: ${screnshotPath}`);
-
-    await page.screenshot({
-      path: screnshotPath,
-    });
+    await bypassCloudflare(page);
+    await saveScreenshot(page, scrapperName);
 
     try {
       const price = await scrapper(page);
