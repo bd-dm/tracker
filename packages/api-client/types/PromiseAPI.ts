@@ -3,6 +3,9 @@ import { Configuration} from '../configuration'
 
 import { CreateProductDto } from '../models/CreateProductDto';
 import { CreateStoreDto } from '../models/CreateStoreDto';
+import { EntityProduct } from '../models/EntityProduct';
+import { EntityProductPrice } from '../models/EntityProductPrice';
+import { EntityStore } from '../models/EntityStore';
 import { ObservableProductPricesApi } from './ObservableAPI';
 
 import { ProductPricesApiRequestFactory, ProductPricesApiResponseProcessor} from "../apis/ProductPricesApi";
@@ -19,14 +22,14 @@ export class PromiseProductPricesApi {
 
     /**
      */
-    public productPricesControllerFindAllWithHttpInfo(_options?: Configuration): Promise<HttpInfo<void>> {
+    public productPricesControllerFindAllWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<EntityProductPrice>>> {
         const result = this.api.productPricesControllerFindAllWithHttpInfo(_options);
         return result.toPromise();
     }
 
     /**
      */
-    public productPricesControllerFindAll(_options?: Configuration): Promise<void> {
+    public productPricesControllerFindAll(_options?: Configuration): Promise<Array<EntityProductPrice>> {
         const result = this.api.productPricesControllerFindAll(_options);
         return result.toPromise();
     }
@@ -34,7 +37,7 @@ export class PromiseProductPricesApi {
     /**
      * @param id 
      */
-    public productPricesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public productPricesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<EntityProductPrice>> {
         const result = this.api.productPricesControllerFindOneWithHttpInfo(id, _options);
         return result.toPromise();
     }
@@ -42,7 +45,7 @@ export class PromiseProductPricesApi {
     /**
      * @param id 
      */
-    public productPricesControllerFindOne(id: string, _options?: Configuration): Promise<void> {
+    public productPricesControllerFindOne(id: string, _options?: Configuration): Promise<EntityProductPrice> {
         const result = this.api.productPricesControllerFindOne(id, _options);
         return result.toPromise();
     }
@@ -84,14 +87,14 @@ export class PromiseProductsApi {
 
     /**
      */
-    public productsControllerFindAllWithHttpInfo(_options?: Configuration): Promise<HttpInfo<void>> {
+    public productsControllerFindAllWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<EntityProduct>>> {
         const result = this.api.productsControllerFindAllWithHttpInfo(_options);
         return result.toPromise();
     }
 
     /**
      */
-    public productsControllerFindAll(_options?: Configuration): Promise<void> {
+    public productsControllerFindAll(_options?: Configuration): Promise<Array<EntityProduct>> {
         const result = this.api.productsControllerFindAll(_options);
         return result.toPromise();
     }
@@ -99,7 +102,7 @@ export class PromiseProductsApi {
     /**
      * @param id 
      */
-    public productsControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public productsControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<EntityProduct>> {
         const result = this.api.productsControllerFindOneWithHttpInfo(id, _options);
         return result.toPromise();
     }
@@ -107,7 +110,7 @@ export class PromiseProductsApi {
     /**
      * @param id 
      */
-    public productsControllerFindOne(id: string, _options?: Configuration): Promise<void> {
+    public productsControllerFindOne(id: string, _options?: Configuration): Promise<EntityProduct> {
         const result = this.api.productsControllerFindOne(id, _options);
         return result.toPromise();
     }
@@ -216,14 +219,14 @@ export class PromiseStoresApi {
 
     /**
      */
-    public storesControllerFindAllWithHttpInfo(_options?: Configuration): Promise<HttpInfo<void>> {
+    public storesControllerFindAllWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<EntityStore>>> {
         const result = this.api.storesControllerFindAllWithHttpInfo(_options);
         return result.toPromise();
     }
 
     /**
      */
-    public storesControllerFindAll(_options?: Configuration): Promise<void> {
+    public storesControllerFindAll(_options?: Configuration): Promise<Array<EntityStore>> {
         const result = this.api.storesControllerFindAll(_options);
         return result.toPromise();
     }
@@ -231,7 +234,7 @@ export class PromiseStoresApi {
     /**
      * @param id 
      */
-    public storesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public storesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<EntityStore>> {
         const result = this.api.storesControllerFindOneWithHttpInfo(id, _options);
         return result.toPromise();
     }
@@ -239,7 +242,7 @@ export class PromiseStoresApi {
     /**
      * @param id 
      */
-    public storesControllerFindOne(id: string, _options?: Configuration): Promise<void> {
+    public storesControllerFindOne(id: string, _options?: Configuration): Promise<EntityStore> {
         const result = this.api.storesControllerFindOne(id, _options);
         return result.toPromise();
     }

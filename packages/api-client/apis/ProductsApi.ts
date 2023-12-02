@@ -9,6 +9,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { CreateProductDto } from '../models/CreateProductDto';
+import { EntityProduct } from '../models/EntityProduct';
 
 /**
  * no description
@@ -221,18 +222,22 @@ export class ProductsApiResponseProcessor {
      * @params response Response returned by the server for a request to productsControllerFindAll
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async productsControllerFindAllWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async productsControllerFindAllWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<EntityProduct> >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Array<EntityProduct> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<EntityProduct>", ""
+            ) as Array<EntityProduct>;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Array<EntityProduct> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Array<EntityProduct>", ""
+            ) as Array<EntityProduct>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -246,18 +251,22 @@ export class ProductsApiResponseProcessor {
      * @params response Response returned by the server for a request to productsControllerFindOne
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async productsControllerFindOneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async productsControllerFindOneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<EntityProduct >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: EntityProduct = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "EntityProduct", ""
+            ) as EntityProduct;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: EntityProduct = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "EntityProduct", ""
+            ) as EntityProduct;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

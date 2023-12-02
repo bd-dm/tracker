@@ -9,6 +9,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { CreateStoreDto } from '../models/CreateStoreDto';
+import { EntityStore } from '../models/EntityStore';
 
 /**
  * no description
@@ -221,18 +222,22 @@ export class StoresApiResponseProcessor {
      * @params response Response returned by the server for a request to storesControllerFindAll
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async storesControllerFindAllWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async storesControllerFindAllWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<EntityStore> >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Array<EntityStore> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<EntityStore>", ""
+            ) as Array<EntityStore>;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Array<EntityStore> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Array<EntityStore>", ""
+            ) as Array<EntityStore>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -246,18 +251,22 @@ export class StoresApiResponseProcessor {
      * @params response Response returned by the server for a request to storesControllerFindOne
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async storesControllerFindOneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async storesControllerFindOneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<EntityStore >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: EntityStore = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "EntityStore", ""
+            ) as EntityStore;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: EntityStore = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "EntityStore", ""
+            ) as EntityStore;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

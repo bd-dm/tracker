@@ -3,6 +3,9 @@ import { Configuration} from '../configuration'
 
 import { CreateProductDto } from '../models/CreateProductDto';
 import { CreateStoreDto } from '../models/CreateStoreDto';
+import { EntityProduct } from '../models/EntityProduct';
+import { EntityProductPrice } from '../models/EntityProductPrice';
+import { EntityStore } from '../models/EntityStore';
 
 import { ObservableProductPricesApi } from "./ObservableAPI";
 import { ProductPricesApiRequestFactory, ProductPricesApiResponseProcessor} from "../apis/ProductPricesApi";
@@ -29,28 +32,28 @@ export class ObjectProductPricesApi {
     /**
      * @param param the request object
      */
-    public productPricesControllerFindAllWithHttpInfo(param: ProductPricesApiProductPricesControllerFindAllRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public productPricesControllerFindAllWithHttpInfo(param: ProductPricesApiProductPricesControllerFindAllRequest = {}, options?: Configuration): Promise<HttpInfo<Array<EntityProductPrice>>> {
         return this.api.productPricesControllerFindAllWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productPricesControllerFindAll(param: ProductPricesApiProductPricesControllerFindAllRequest = {}, options?: Configuration): Promise<void> {
+    public productPricesControllerFindAll(param: ProductPricesApiProductPricesControllerFindAllRequest = {}, options?: Configuration): Promise<Array<EntityProductPrice>> {
         return this.api.productPricesControllerFindAll( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productPricesControllerFindOneWithHttpInfo(param: ProductPricesApiProductPricesControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public productPricesControllerFindOneWithHttpInfo(param: ProductPricesApiProductPricesControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<EntityProductPrice>> {
         return this.api.productPricesControllerFindOneWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productPricesControllerFindOne(param: ProductPricesApiProductPricesControllerFindOneRequest, options?: Configuration): Promise<void> {
+    public productPricesControllerFindOne(param: ProductPricesApiProductPricesControllerFindOneRequest, options?: Configuration): Promise<EntityProductPrice> {
         return this.api.productPricesControllerFindOne(param.id,  options).toPromise();
     }
 
@@ -128,28 +131,28 @@ export class ObjectProductsApi {
     /**
      * @param param the request object
      */
-    public productsControllerFindAllWithHttpInfo(param: ProductsApiProductsControllerFindAllRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public productsControllerFindAllWithHttpInfo(param: ProductsApiProductsControllerFindAllRequest = {}, options?: Configuration): Promise<HttpInfo<Array<EntityProduct>>> {
         return this.api.productsControllerFindAllWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productsControllerFindAll(param: ProductsApiProductsControllerFindAllRequest = {}, options?: Configuration): Promise<void> {
+    public productsControllerFindAll(param: ProductsApiProductsControllerFindAllRequest = {}, options?: Configuration): Promise<Array<EntityProduct>> {
         return this.api.productsControllerFindAll( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productsControllerFindOneWithHttpInfo(param: ProductsApiProductsControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public productsControllerFindOneWithHttpInfo(param: ProductsApiProductsControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<EntityProduct>> {
         return this.api.productsControllerFindOneWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productsControllerFindOne(param: ProductsApiProductsControllerFindOneRequest, options?: Configuration): Promise<void> {
+    public productsControllerFindOne(param: ProductsApiProductsControllerFindOneRequest, options?: Configuration): Promise<EntityProduct> {
         return this.api.productsControllerFindOne(param.id,  options).toPromise();
     }
 
@@ -284,28 +287,28 @@ export class ObjectStoresApi {
     /**
      * @param param the request object
      */
-    public storesControllerFindAllWithHttpInfo(param: StoresApiStoresControllerFindAllRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public storesControllerFindAllWithHttpInfo(param: StoresApiStoresControllerFindAllRequest = {}, options?: Configuration): Promise<HttpInfo<Array<EntityStore>>> {
         return this.api.storesControllerFindAllWithHttpInfo( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public storesControllerFindAll(param: StoresApiStoresControllerFindAllRequest = {}, options?: Configuration): Promise<void> {
+    public storesControllerFindAll(param: StoresApiStoresControllerFindAllRequest = {}, options?: Configuration): Promise<Array<EntityStore>> {
         return this.api.storesControllerFindAll( options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public storesControllerFindOneWithHttpInfo(param: StoresApiStoresControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public storesControllerFindOneWithHttpInfo(param: StoresApiStoresControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<EntityStore>> {
         return this.api.storesControllerFindOneWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public storesControllerFindOne(param: StoresApiStoresControllerFindOneRequest, options?: Configuration): Promise<void> {
+    public storesControllerFindOne(param: StoresApiStoresControllerFindOneRequest, options?: Configuration): Promise<EntityStore> {
         return this.api.storesControllerFindOne(param.id,  options).toPromise();
     }
 

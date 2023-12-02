@@ -68,7 +68,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **storesControllerFindAll**
-> void storesControllerFindAll()
+> Array<EntityStore> storesControllerFindAll()
 
 
 ### Example
@@ -95,7 +95,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**void**
+**Array<EntityStore>**
 
 ### Authorization
 
@@ -104,7 +104,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -115,7 +115,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **storesControllerFindOne**
-> void storesControllerFindOne()
+> EntityStore storesControllerFindOne()
 
 
 ### Example
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**EntityStore**
 
 ### Authorization
 
@@ -157,7 +157,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details

@@ -69,7 +69,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **productsControllerFindAll**
-> void productsControllerFindAll()
+> Array<EntityProduct> productsControllerFindAll()
 
 
 ### Example
@@ -96,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**void**
+**Array<EntityProduct>**
 
 ### Authorization
 
@@ -105,7 +105,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -116,7 +116,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **productsControllerFindOne**
-> void productsControllerFindOne()
+> EntityProduct productsControllerFindOne()
 
 
 ### Example
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**EntityProduct**
 
 ### Authorization
 
@@ -158,7 +158,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details

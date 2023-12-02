@@ -34,7 +34,10 @@ export class HttpException extends Error {
 export type RequestBody = undefined | string | FormData | URLSearchParams;
 
 function ensureAbsoluteUrl(url: string) {
-    return url;
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+    }
+    return window.location.origin + url;
 }
 
 /**

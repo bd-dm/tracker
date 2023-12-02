@@ -1,5 +1,3 @@
-.gitignore
-.openapi-generator-ignore
 ProductPricesApi.md
 ProductsApi.md
 README.md
@@ -16,13 +14,14 @@ configuration.ts
 git_push.sh
 http/http.ts
 http/isomorphic-fetch.ts
-index.ts
 middleware.ts
 models/CreateProductDto.ts
 models/CreateStoreDto.ts
+models/EntityProduct.ts
+models/EntityProductPrice.ts
+models/EntityStore.ts
 models/ObjectSerializer.ts
 models/all.ts
-package.json
 rxjsStub.ts
 servers.ts
 tsconfig.json

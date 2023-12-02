@@ -4,6 +4,9 @@ import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { CreateProductDto } from '../models/CreateProductDto';
 import { CreateStoreDto } from '../models/CreateStoreDto';
+import { EntityProduct } from '../models/EntityProduct';
+import { EntityProductPrice } from '../models/EntityProductPrice';
+import { EntityStore } from '../models/EntityStore';
 
 import { ProductPricesApiRequestFactory, ProductPricesApiResponseProcessor} from "../apis/ProductPricesApi";
 export class ObservableProductPricesApi {
@@ -23,7 +26,7 @@ export class ObservableProductPricesApi {
 
     /**
      */
-    public productPricesControllerFindAllWithHttpInfo(_options?: Configuration): Observable<HttpInfo<void>> {
+    public productPricesControllerFindAllWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Array<EntityProductPrice>>> {
         const requestContextPromise = this.requestFactory.productPricesControllerFindAll(_options);
 
         // build promise chain
@@ -44,14 +47,14 @@ export class ObservableProductPricesApi {
 
     /**
      */
-    public productPricesControllerFindAll(_options?: Configuration): Observable<void> {
-        return this.productPricesControllerFindAllWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public productPricesControllerFindAll(_options?: Configuration): Observable<Array<EntityProductPrice>> {
+        return this.productPricesControllerFindAllWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<EntityProductPrice>>) => apiResponse.data));
     }
 
     /**
      * @param id 
      */
-    public productPricesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public productPricesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<EntityProductPrice>> {
         const requestContextPromise = this.requestFactory.productPricesControllerFindOne(id, _options);
 
         // build promise chain
@@ -73,8 +76,8 @@ export class ObservableProductPricesApi {
     /**
      * @param id 
      */
-    public productPricesControllerFindOne(id: string, _options?: Configuration): Observable<void> {
-        return this.productPricesControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public productPricesControllerFindOne(id: string, _options?: Configuration): Observable<EntityProductPrice> {
+        return this.productPricesControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<EntityProductPrice>) => apiResponse.data));
     }
 
 }
@@ -126,7 +129,7 @@ export class ObservableProductsApi {
 
     /**
      */
-    public productsControllerFindAllWithHttpInfo(_options?: Configuration): Observable<HttpInfo<void>> {
+    public productsControllerFindAllWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Array<EntityProduct>>> {
         const requestContextPromise = this.requestFactory.productsControllerFindAll(_options);
 
         // build promise chain
@@ -147,14 +150,14 @@ export class ObservableProductsApi {
 
     /**
      */
-    public productsControllerFindAll(_options?: Configuration): Observable<void> {
-        return this.productsControllerFindAllWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public productsControllerFindAll(_options?: Configuration): Observable<Array<EntityProduct>> {
+        return this.productsControllerFindAllWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<EntityProduct>>) => apiResponse.data));
     }
 
     /**
      * @param id 
      */
-    public productsControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public productsControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<EntityProduct>> {
         const requestContextPromise = this.requestFactory.productsControllerFindOne(id, _options);
 
         // build promise chain
@@ -176,8 +179,8 @@ export class ObservableProductsApi {
     /**
      * @param id 
      */
-    public productsControllerFindOne(id: string, _options?: Configuration): Observable<void> {
-        return this.productsControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public productsControllerFindOne(id: string, _options?: Configuration): Observable<EntityProduct> {
+        return this.productsControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<EntityProduct>) => apiResponse.data));
     }
 
     /**
@@ -334,7 +337,7 @@ export class ObservableStoresApi {
 
     /**
      */
-    public storesControllerFindAllWithHttpInfo(_options?: Configuration): Observable<HttpInfo<void>> {
+    public storesControllerFindAllWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Array<EntityStore>>> {
         const requestContextPromise = this.requestFactory.storesControllerFindAll(_options);
 
         // build promise chain
@@ -355,14 +358,14 @@ export class ObservableStoresApi {
 
     /**
      */
-    public storesControllerFindAll(_options?: Configuration): Observable<void> {
-        return this.storesControllerFindAllWithHttpInfo(_options).pipe(map(async (apiResponse: HttpInfo<void>) => apiResponse.data));
+    public storesControllerFindAll(_options?: Configuration): Observable<Array<EntityStore>> {
+        return this.storesControllerFindAllWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<EntityStore>>) => apiResponse.data));
     }
 
     /**
      * @param id 
      */
-    public storesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public storesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<EntityStore>> {
         const requestContextPromise = this.requestFactory.storesControllerFindOne(id, _options);
 
         // build promise chain
@@ -384,8 +387,8 @@ export class ObservableStoresApi {
     /**
      * @param id 
      */
-    public storesControllerFindOne(id: string, _options?: Configuration): Observable<void> {
-        return this.storesControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public storesControllerFindOne(id: string, _options?: Configuration): Observable<EntityStore> {
+        return this.storesControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<EntityStore>) => apiResponse.data));
     }
 
     /**

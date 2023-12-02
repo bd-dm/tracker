@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **productPricesControllerFindAll**
-> void productPricesControllerFindAll()
+> Array<EntityProductPrice> productPricesControllerFindAll()
 
 
 ### Example
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**void**
+**Array<EntityProductPrice>**
 
 ### Authorization
 
@@ -45,7 +45,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **productPricesControllerFindOne**
-> void productPricesControllerFindOne()
+> EntityProductPrice productPricesControllerFindOne()
 
 
 ### Example
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**EntityProductPrice**
 
 ### Authorization
 
@@ -98,7 +98,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details

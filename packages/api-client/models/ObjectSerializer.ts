@@ -1,8 +1,14 @@
 export * from '../models/CreateProductDto';
 export * from '../models/CreateStoreDto';
+export * from '../models/EntityProduct';
+export * from '../models/EntityProductPrice';
+export * from '../models/EntityStore';
 
 import { CreateProductDto } from '../models/CreateProductDto';
 import { CreateStoreDto } from '../models/CreateStoreDto';
+import { EntityProduct } from '../models/EntityProduct';
+import { EntityProductPrice } from '../models/EntityProductPrice';
+import { EntityStore } from '../models/EntityStore';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -32,6 +38,9 @@ let enumsMap: Set<string> = new Set<string>([
 let typeMap: {[index: string]: any} = {
     "CreateProductDto": CreateProductDto,
     "CreateStoreDto": CreateStoreDto,
+    "EntityProduct": EntityProduct,
+    "EntityProductPrice": EntityProductPrice,
+    "EntityStore": EntityStore,
 }
 
 export class ObjectSerializer {

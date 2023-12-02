@@ -1,5 +1,4 @@
 import { RequestContext, HttpMethod } from "./http/http";
-import * as process from "process";
 
 export interface BaseServerConfiguration {
     makeRequestContext(endpoint: string, httpMethod: HttpMethod): RequestContext;
@@ -50,3 +49,7 @@ export class ServerConfiguration<T extends { [key: string]: string }> implements
         return new RequestContext(this.getUrl() + endpoint, httpMethod);
     }
 }
+
+export const server1 = new ServerConfiguration<{  }>("", {  })
+
+export const servers = [server1];

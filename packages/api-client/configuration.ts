@@ -1,7 +1,7 @@
 import { HttpLibrary } from "./http/http";
 import { Middleware, PromiseMiddleware, PromiseMiddlewareWrapper } from "./middleware";
 import { IsomorphicFetchHttpLibrary as DefaultHttpLibrary } from "./http/isomorphic-fetch";
-import { BaseServerConfiguration } from "./servers";
+import { BaseServerConfiguration, server1 } from "./servers";
 import { configureAuthMethods, AuthMethods, AuthMethodsConfiguration } from "./auth/auth";
 
 export interface Configuration {
@@ -22,7 +22,7 @@ export interface ConfigurationParameters {
      * create your own server with the `ServerConfiguration` class from the same 
      * file.
      */
-    baseServer: BaseServerConfiguration;
+    baseServer?: BaseServerConfiguration;
     /**
      * HTTP library to use e.g. IsomorphicFetch. This can usually be skipped as 
      * all generators come with a default library.
@@ -66,9 +66,9 @@ export interface ConfigurationParameters {
  *
  * @param conf partial configuration
  */
-export function createConfiguration(conf: ConfigurationParameters): Configuration {
+export function createConfiguration(conf: ConfigurationParameters = {}): Configuration {
     const configuration: Configuration = {
-        baseServer: conf.baseServer,
+        baseServer: conf.baseServer !== undefined ? conf.baseServer : server1,
         httpApi: conf.httpApi || new DefaultHttpLibrary(),
         middleware: conf.middleware || [],
         authMethods: configureAuthMethods(conf.authMethods)
