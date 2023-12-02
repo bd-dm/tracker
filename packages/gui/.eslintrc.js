@@ -48,6 +48,7 @@ module.exports = {
     'react/jsx-first-prop-new-line': [1, 'multiline'],
     'react/jsx-max-props-per-line': [1, { maximum: 1, when: 'multiline' }],
     'react/jsx-one-expression-per-line': [1, { allow: 'single-child' }],
-    '@typescript-eslint/explicit-function-return-type': 'warn'
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/no-floating-promises': 'off',
   }
 }
