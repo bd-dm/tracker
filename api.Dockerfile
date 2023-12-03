@@ -18,6 +18,6 @@ RUN yarn api-build
 RUN npx playwright install --with-deps chromium
 RUN npx prisma generate
 
-RUN chmod +x ./packages/api/scripts/start.sh
+RUN chmod +x ./scripts/start-api.sh
 
-CMD ["sh", "./packages/api/scripts/start.sh"]
+CMD ["sh", "./scripts/start-api.sh"]

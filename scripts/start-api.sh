@@ -1,3 +1,5 @@
+cd packages/api
+
 npx prisma migrate deploy
 
-yarn api-start
+yarn start
