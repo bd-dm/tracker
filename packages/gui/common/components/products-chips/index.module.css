@@ -1,0 +1,9 @@
+.chip {
+    height: auto !important;
+    padding: 4px !important;
+}
+
+.chipLabel {
+    white-space: normal !important;
+    word-wrap: break-word;
+}

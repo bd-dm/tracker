@@ -1,8 +1,7 @@
 import { api } from '../../../../common/api'
-import { Chip, Stack, Typography } from '@mui/material'
-import Link from 'next/link'
-import { NavigationPage } from '../../../../common/enums/navigation'
+import { Stack, Typography } from '@mui/material'
 import { PricesChart } from '../../../../common/components/prices-chart'
+import { ProductsChips } from '../../../../common/components/products-chips'
 
 export default async function ProductPrices ({ params: { productId } }: { params: { productId: string } }) {
   const products = await api.products.productsControllerFindAll()
@@ -27,20 +26,28 @@ export default async function ProductPrices ({ params: { productId } }: { params
     }
   })
 
+  const hasPrices = Object.keys(datesPrices).length > 0
+
   return (
     <Stack spacing={2}>
-      <Stack direction={'row'} spacing={1}>
-        {products.map(product => (
-          <Link key={product.id} href={`/${NavigationPage.ProductPrices}/${product.id}`}>
-            <Chip label={product.name} variant={product.id === productId ? 'filled' : 'outlined'} />
-          </Link>
-        ))}
-      </Stack>
+      <ProductsChips
+        products={products}
+        getIsActive={(product) => productId === product.id}
+      />
 
       <Stack spacing={3}>
         <Typography variant={'h4'}>{product.name}</Typography>
 
-        <PricesChart prices={datesPrices} />
+        {hasPrices
+          ? (
+            <PricesChart prices={datesPrices} />
+            )
+          : (
+            <Typography variant={'caption'}>
+              No prices yet
+            </Typography>
+            )
+        }
       </Stack>
     </Stack>
   )
