@@ -5,7 +5,10 @@
   ],
   "scripts": {
     "api-dev": "cd packages/api && nest start --watch",
+    "api-build": "cd packages/api && yarn build",
     "gui-dev": "cd packages/gui && next dev",
+    "gui-build": "cd packages/gui && yarn build",
+    "gui-start": "cd packages/gui && yarn start",
     "generate:api-client": "openapi-generator-cli generate -g typescript -i http://127.0.0.1:5000/api-json -o packages/api-client --additional-properties=enumPropertyNaming=camelCase,supportsES6=true"
   },
   "devDependencies": {

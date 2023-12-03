@@ -3,7 +3,8 @@ version: '3.8'
 services:
   api:
     build:
-      context: ./packages/api
+      context: .
+      dockerfile: ./api.Dockerfile
     env_file:
       - stack.env
     ports:
@@ -11,6 +12,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  gui:
+    build:
+      context: .
+      dockerfile: ./gui.Dockerfile
+    env_file:
+      - stack.env
+    ports:
+      - "5001:3000"
 
   db:
     image: postgres:16

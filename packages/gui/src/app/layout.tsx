@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: 'Tracker',
   description: 'Tracker'
 }
+export const dynamic = 'force-dynamic'
 
 export default function RootLayout ({
   children

@@ -1,3 +1,3 @@
 npx prisma migrate deploy
 
-npm start
+npm api-start

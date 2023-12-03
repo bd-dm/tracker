@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 RUN apt update
 RUN apt install -y ca-certificates curl gnupg
@@ -9,13 +9,11 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt update
 RUN apt install nodejs -y
 
+RUN npm install -g yarn
+
 COPY . .
-RUN npm install
+RUN yarn install --frozen-lockfile
 
-RUN npm run build
-RUN npx playwright install --with-deps chromium
-RUN npx prisma generate
+RUN yarn gui-build
 
-RUN chmod +x ./scripts/start.sh
-
-CMD ["sh", "./scripts/start.sh"]
+CMD ["yarn", "gui-start"]

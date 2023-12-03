@@ -2,7 +2,6 @@ import { api } from '../../../../common/api'
 import { Chip, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 import { NavigationPage } from '../../../../common/enums/navigation'
-import { BarChart } from '@mui/x-charts'
 import { PricesChart } from '../../../../common/components/prices-chart'
 
 export default async function ProductPrices ({ params: { productId } }: { params: { productId: string } }) {
