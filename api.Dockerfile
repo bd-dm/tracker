@@ -14,7 +14,7 @@ RUN npm install -g yarn
 COPY . .
 RUN yarn install --frozen-lockfile
 
-RUN yarn api-build
+RUN yarn api:build
 RUN npx playwright install --with-deps chromium
 RUN npx prisma generate
 
