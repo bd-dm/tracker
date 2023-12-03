@@ -1,3 +1,3 @@
 npx prisma migrate deploy
 
-npm api-start
+yarn api-start

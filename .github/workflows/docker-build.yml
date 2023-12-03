@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          dockerfile: ./api.Dockerfile
+          file: ./api.Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/api:latest
 
@@ -34,6 +34,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          dockerfile: ./gui.Dockerfile
+          file: ./gui.Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/gui:latest
