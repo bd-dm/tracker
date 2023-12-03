@@ -2,11 +2,31 @@ import { api } from '../../../../common/api'
 import { Chip, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 import { NavigationPage } from '../../../../common/enums/navigation'
+import { BarChart } from '@mui/x-charts'
+import { PricesChart } from '../../../../common/components/prices-chart'
 
 export default async function ProductPrices ({ params: { productId } }: { params: { productId: string } }) {
   const products = await api.products.productsControllerFindAll()
   const product = await api.products.productsControllerFindOne(productId)
   const productPrices = await api.productPrices.productPricesControllerFindByProduct(productId)
+
+  const getDateString = (date: Date): string => {
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = ('0' + date.getDate().toString()).slice(-2)
+
+    return `${day}-${month}-${year}`
+  }
+
+  const datesPrices: Record<string, number> = {}
+  productPrices.forEach(productPrice => {
+    const dateString = getDateString(productPrice.createdAt)
+    const price = productPrice.price
+
+    if (datesPrices[dateString] === undefined || datesPrices[dateString] > price) {
+      datesPrices[dateString] = price
+    }
+  })
 
   return (
     <Stack spacing={2}>
@@ -21,7 +41,7 @@ export default async function ProductPrices ({ params: { productId } }: { params
       <Stack spacing={3}>
         <Typography variant={'h4'}>{product.name}</Typography>
 
-        <p>{JSON.stringify(productPrices)}</p>
+        <PricesChart prices={datesPrices} />
       </Stack>
     </Stack>
   )
