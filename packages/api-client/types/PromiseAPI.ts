@@ -35,18 +35,18 @@ export class PromiseProductPricesApi {
     }
 
     /**
-     * @param id 
+     * @param productId 
      */
-    public productPricesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<EntityProductPrice>> {
-        const result = this.api.productPricesControllerFindOneWithHttpInfo(id, _options);
+    public productPricesControllerFindByProductWithHttpInfo(productId: string, _options?: Configuration): Promise<HttpInfo<Array<EntityProductPrice>>> {
+        const result = this.api.productPricesControllerFindByProductWithHttpInfo(productId, _options);
         return result.toPromise();
     }
 
     /**
-     * @param id 
+     * @param productId 
      */
-    public productPricesControllerFindOne(id: string, _options?: Configuration): Promise<EntityProductPrice> {
-        const result = this.api.productPricesControllerFindOne(id, _options);
+    public productPricesControllerFindByProduct(productId: string, _options?: Configuration): Promise<Array<EntityProductPrice>> {
+        const result = this.api.productPricesControllerFindByProduct(productId, _options);
         return result.toPromise();
     }
 

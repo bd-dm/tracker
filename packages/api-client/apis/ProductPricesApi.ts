@@ -38,20 +38,20 @@ export class ProductPricesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * @param id 
+     * @param productId 
      */
-    public async productPricesControllerFindOne(id: string, _options?: Configuration): Promise<RequestContext> {
+    public async productPricesControllerFindByProduct(productId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new RequiredError("ProductPricesApi", "productPricesControllerFindOne", "id");
+        // verify required parameter 'productId' is not null or undefined
+        if (productId === null || productId === undefined) {
+            throw new RequiredError("ProductPricesApi", "productPricesControllerFindByProduct", "productId");
         }
 
 
         // Path Params
-        const localVarPath = '/product-prices/{id}'
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+        const localVarPath = '/product-prices/{productId}'
+            .replace('{' + 'productId' + '}', encodeURIComponent(String(productId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -104,25 +104,25 @@ export class ProductPricesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to productPricesControllerFindOne
+     * @params response Response returned by the server for a request to productPricesControllerFindByProduct
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async productPricesControllerFindOneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<EntityProductPrice >> {
+     public async productPricesControllerFindByProductWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<EntityProductPrice> >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: EntityProductPrice = ObjectSerializer.deserialize(
+            const body: Array<EntityProductPrice> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "EntityProductPrice", ""
-            ) as EntityProductPrice;
+                "Array<EntityProductPrice>", ""
+            ) as Array<EntityProductPrice>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: EntityProductPrice = ObjectSerializer.deserialize(
+            const body: Array<EntityProductPrice> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "EntityProductPrice", ""
-            ) as EntityProductPrice;
+                "Array<EntityProductPrice>", ""
+            ) as Array<EntityProductPrice>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

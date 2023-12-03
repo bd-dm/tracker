@@ -17,6 +17,12 @@ export class ProductPricesService {
     return this.prismaService.productPrice.findMany();
   }
 
+  findByProduct(productId: string) {
+    return this.prismaService.productPrice.findMany({
+      where: { productId },
+    });
+  }
+
   findOne(id: string) {
     return this.prismaService.productPrice.findUnique({
       where: { id },

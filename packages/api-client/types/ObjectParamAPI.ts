@@ -13,13 +13,13 @@ import { ProductPricesApiRequestFactory, ProductPricesApiResponseProcessor} from
 export interface ProductPricesApiProductPricesControllerFindAllRequest {
 }
 
-export interface ProductPricesApiProductPricesControllerFindOneRequest {
+export interface ProductPricesApiProductPricesControllerFindByProductRequest {
     /**
      * 
      * @type string
-     * @memberof ProductPricesApiproductPricesControllerFindOne
+     * @memberof ProductPricesApiproductPricesControllerFindByProduct
      */
-    id: string
+    productId: string
 }
 
 export class ObjectProductPricesApi {
@@ -46,15 +46,15 @@ export class ObjectProductPricesApi {
     /**
      * @param param the request object
      */
-    public productPricesControllerFindOneWithHttpInfo(param: ProductPricesApiProductPricesControllerFindOneRequest, options?: Configuration): Promise<HttpInfo<EntityProductPrice>> {
-        return this.api.productPricesControllerFindOneWithHttpInfo(param.id,  options).toPromise();
+    public productPricesControllerFindByProductWithHttpInfo(param: ProductPricesApiProductPricesControllerFindByProductRequest, options?: Configuration): Promise<HttpInfo<Array<EntityProductPrice>>> {
+        return this.api.productPricesControllerFindByProductWithHttpInfo(param.productId,  options).toPromise();
     }
 
     /**
      * @param param the request object
      */
-    public productPricesControllerFindOne(param: ProductPricesApiProductPricesControllerFindOneRequest, options?: Configuration): Promise<EntityProductPrice> {
-        return this.api.productPricesControllerFindOne(param.id,  options).toPromise();
+    public productPricesControllerFindByProduct(param: ProductPricesApiProductPricesControllerFindByProductRequest, options?: Configuration): Promise<Array<EntityProductPrice>> {
+        return this.api.productPricesControllerFindByProduct(param.productId,  options).toPromise();
     }
 
 }

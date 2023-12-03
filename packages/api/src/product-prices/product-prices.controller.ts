@@ -16,11 +16,11 @@ export class ProductPricesController {
     return this.productPricesService.findAll();
   }
 
-  @Get(':id')
+  @Get(':productId')
   @ApiOkResponse({
-    type: EntityProductPrice,
+    type: [EntityProductPrice],
   })
-  findOne(@Param('id') id: string) {
-    return this.productPricesService.findOne(id);
+  findByProduct(@Param('productId') productId: string) {
+    return this.productPricesService.findByProduct(productId);
   }
 }

@@ -52,10 +52,10 @@ export class ObservableProductPricesApi {
     }
 
     /**
-     * @param id 
+     * @param productId 
      */
-    public productPricesControllerFindOneWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<EntityProductPrice>> {
-        const requestContextPromise = this.requestFactory.productPricesControllerFindOne(id, _options);
+    public productPricesControllerFindByProductWithHttpInfo(productId: string, _options?: Configuration): Observable<HttpInfo<Array<EntityProductPrice>>> {
+        const requestContextPromise = this.requestFactory.productPricesControllerFindByProduct(productId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -69,15 +69,15 @@ export class ObservableProductPricesApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.productPricesControllerFindOneWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.productPricesControllerFindByProductWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * @param id 
+     * @param productId 
      */
-    public productPricesControllerFindOne(id: string, _options?: Configuration): Observable<EntityProductPrice> {
-        return this.productPricesControllerFindOneWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<EntityProductPrice>) => apiResponse.data));
+    public productPricesControllerFindByProduct(productId: string, _options?: Configuration): Observable<Array<EntityProductPrice>> {
+        return this.productPricesControllerFindByProductWithHttpInfo(productId, _options).pipe(map((apiResponse: HttpInfo<Array<EntityProductPrice>>) => apiResponse.data));
     }
 
 }

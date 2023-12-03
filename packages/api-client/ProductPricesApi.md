@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**productPricesControllerFindAll**](ProductPricesApi.md#productPricesControllerFindAll) | **GET** /product-prices | 
-[**productPricesControllerFindOne**](ProductPricesApi.md#productPricesControllerFindOne) | **GET** /product-prices/{id} | 
+[**productPricesControllerFindByProduct**](ProductPricesApi.md#productPricesControllerFindByProduct) | **GET** /product-prices/{productId} | 
 
 
 # **productPricesControllerFindAll**
@@ -55,8 +55,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **productPricesControllerFindOne**
-> EntityProductPrice productPricesControllerFindOne()
+# **productPricesControllerFindByProduct**
+> Array<EntityProductPrice> productPricesControllerFindByProduct()
 
 
 ### Example
@@ -69,12 +69,12 @@ import * as fs from 'fs';
 const configuration = .createConfiguration();
 const apiInstance = new .ProductPricesApi(configuration);
 
-let body:.ProductPricesApiProductPricesControllerFindOneRequest = {
+let body:.ProductPricesApiProductPricesControllerFindByProductRequest = {
   // string
-  id: "id_example",
+  productId: "productId_example",
 };
 
-apiInstance.productPricesControllerFindOne(body).then((data:any) => {
+apiInstance.productPricesControllerFindByProduct(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -84,12 +84,12 @@ apiInstance.productPricesControllerFindOne(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**] |  | defaults to undefined
+ **productId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**EntityProductPrice**
+**Array<EntityProductPrice>**
 
 ### Authorization
 
