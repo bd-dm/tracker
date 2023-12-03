@@ -1,5 +1,6 @@
 cd packages/api
 
+npx prisma generate
 npx prisma migrate deploy
 
-yarn start
+node dist/main.js

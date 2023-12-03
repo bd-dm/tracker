@@ -1,4 +1,4 @@
-FROM node:20-alpine as builder
+FROM node:lts-alpine as builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY ./packages/api-client ./packages/api-client
 RUN yarn install --frozen-lockfile
 RUN yarn gui:build
 
-FROM node:20-alpine as runner
+FROM node:lts-alpine as runner
 
 WORKDIR /app
 
