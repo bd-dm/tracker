@@ -14,11 +14,13 @@ FROM node:20-alpine as runner
 
 WORKDIR /app
 
-COPY --from=builder /app/packages/gui/public ./public
-COPY --from=builder /app/packages/gui/.next/standalone ./.next/standalone
-COPY --from=builder /app/packages/gui/.next/static ./.next/static
+COPY --from=builder /app/packages/gui/.next/standalone ./
+COPY --from=builder /app/packages/gui/public ./packages/gui/public
+COPY --from=builder /app/packages/gui/.next/static ./packages/gui/.next/static
 COPY ./scripts/start-gui.sh ./scripts/start-gui.sh
 
 RUN chmod +x ./scripts/start-gui.sh
+
+EXPOSE 3000
 
 CMD ["sh", "./scripts/start-gui.sh"]
